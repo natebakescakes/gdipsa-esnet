@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1
+﻿namespace Lectures.Day1.WindowsFormsApp1
 {
     partial class Form3
     {
