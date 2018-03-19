@@ -46,6 +46,8 @@ namespace Lectures.Day1.WindowsFormsApp1
             commandBuilder = new SqlCommandBuilder(dataAdapter);
 
             // Create and fill dataSet
+            // dataAdapter will open and close connection automatically
+            // when fill is called
             dataSet = new DataSet();
             dataAdapter.Fill(dataSet, "Customers");
         }

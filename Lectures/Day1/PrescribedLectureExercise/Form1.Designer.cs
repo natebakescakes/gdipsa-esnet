@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.MovieTitleRadio = new System.Windows.Forms.RadioButton();
+            this.VideoCodeRadio = new System.Windows.Forms.RadioButton();
             this.SearchButton = new System.Windows.Forms.Button();
             this.VideoSearchTextBox = new System.Windows.Forms.TextBox();
             this.LastButton = new System.Windows.Forms.Button();
@@ -45,9 +47,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.VideoCodeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.VideoCodeRadio = new System.Windows.Forms.RadioButton();
-            this.MovieTitleRadio = new System.Windows.Forms.RadioButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -62,6 +65,28 @@
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Find Movie";
+            // 
+            // MovieTitleRadio
+            // 
+            this.MovieTitleRadio.AutoSize = true;
+            this.MovieTitleRadio.Location = new System.Drawing.Point(322, 126);
+            this.MovieTitleRadio.Name = "MovieTitleRadio";
+            this.MovieTitleRadio.Size = new System.Drawing.Size(230, 36);
+            this.MovieTitleRadio.TabIndex = 17;
+            this.MovieTitleRadio.Text = "By Movie Title";
+            this.MovieTitleRadio.UseVisualStyleBackColor = true;
+            // 
+            // VideoCodeRadio
+            // 
+            this.VideoCodeRadio.AutoSize = true;
+            this.VideoCodeRadio.Checked = true;
+            this.VideoCodeRadio.Location = new System.Drawing.Point(64, 126);
+            this.VideoCodeRadio.Name = "VideoCodeRadio";
+            this.VideoCodeRadio.Size = new System.Drawing.Size(241, 36);
+            this.VideoCodeRadio.TabIndex = 16;
+            this.VideoCodeRadio.TabStop = true;
+            this.VideoCodeRadio.Text = "By Video Code";
+            this.VideoCodeRadio.UseVisualStyleBackColor = true;
             // 
             // SearchButton
             // 
@@ -208,34 +233,30 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Video Code";
             // 
-            // VideoCodeRadio
+            // statusStrip1
             // 
-            this.VideoCodeRadio.AutoSize = true;
-            this.VideoCodeRadio.Checked = true;
-            this.VideoCodeRadio.Location = new System.Drawing.Point(64, 126);
-            this.VideoCodeRadio.Name = "VideoCodeRadio";
-            this.VideoCodeRadio.Size = new System.Drawing.Size(241, 36);
-            this.VideoCodeRadio.TabIndex = 16;
-            this.VideoCodeRadio.TabStop = true;
-            this.VideoCodeRadio.Text = "By Video Code";
-            this.VideoCodeRadio.UseVisualStyleBackColor = true;
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 536);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(985, 46);
+            this.statusStrip1.TabIndex = 30;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // MovieTitleRadio
+            // toolStripStatusLabel1
             // 
-            this.MovieTitleRadio.AutoSize = true;
-            this.MovieTitleRadio.Location = new System.Drawing.Point(322, 126);
-            this.MovieTitleRadio.Name = "MovieTitleRadio";
-            this.MovieTitleRadio.Size = new System.Drawing.Size(230, 36);
-            this.MovieTitleRadio.TabIndex = 17;
-            this.MovieTitleRadio.Text = "By Movie Title";
-            this.MovieTitleRadio.UseVisualStyleBackColor = true;
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(297, 41);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // Form1
             // 
             this.AcceptButton = this.SearchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 541);
+            this.ClientSize = new System.Drawing.Size(985, 582);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LastButton);
             this.Controls.Add(this.FirstButton);
@@ -255,6 +276,8 @@
             this.Text = "Prescribed Lecture Exercise";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,6 +304,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton MovieTitleRadio;
         private System.Windows.Forms.RadioButton VideoCodeRadio;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 

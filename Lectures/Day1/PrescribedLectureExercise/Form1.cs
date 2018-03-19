@@ -46,9 +46,8 @@ namespace Lectures.Day1.PrescribedLectureExercise
             dataSet = new DataSet();
             dataAdapter.Fill(dataSet, "Movies");
 
-            VideoCodeTextBox.Text = dataSet.Tables["Movies"].Rows[0][0].ToString();
-            MovieTitleTextBox.Text = dataSet.Tables["Movies"].Rows[0][1].ToString();
-            RatingTextBox.Text = dataSet.Tables["Movies"].Rows[0][2].ToString();
+            RefreshFields(0);
+            UpdateToolStripStatus();
         }
 
         private void NextButton_Click(object sender, EventArgs e)
@@ -56,7 +55,9 @@ namespace Lectures.Day1.PrescribedLectureExercise
             if (currentRowIndex != dataSet.Tables["Movies"].Rows.Count - 1)
             {
                 currentRowIndex++;
-                RefreshFields();
+                RefreshFields(currentRowIndex);
+
+                UpdateToolStripStatus();
             }
         }
 
@@ -65,7 +66,9 @@ namespace Lectures.Day1.PrescribedLectureExercise
             if (currentRowIndex != 0)
             {
                 currentRowIndex--;
-                RefreshFields();
+                RefreshFields(currentRowIndex);
+
+                UpdateToolStripStatus();
             }
         }
 
@@ -73,20 +76,24 @@ namespace Lectures.Day1.PrescribedLectureExercise
         private void LastButton_Click(object sender, EventArgs e)
         {
             currentRowIndex = dataSet.Tables["Movies"].Rows.Count - 1;
-            RefreshFields();
+            RefreshFields(currentRowIndex);
+
+            UpdateToolStripStatus();
         }
 
         private void FirstButton_Click(object sender, EventArgs e)
         {
             currentRowIndex = 0;
-            RefreshFields();
+            RefreshFields(currentRowIndex);
+
+            UpdateToolStripStatus();
         }
 
-        private void RefreshFields()
+        private void RefreshFields(int rowIndex)
         {
-            VideoCodeTextBox.Text = dataSet.Tables["Movies"].Rows[currentRowIndex][0].ToString();
-            MovieTitleTextBox.Text = dataSet.Tables["Movies"].Rows[currentRowIndex][1].ToString();
-            RatingTextBox.Text = dataSet.Tables["Movies"].Rows[currentRowIndex][2].ToString();
+            VideoCodeTextBox.Text = dataSet.Tables["Movies"].Rows[rowIndex][0].ToString();
+            MovieTitleTextBox.Text = dataSet.Tables["Movies"].Rows[rowIndex][1].ToString();
+            RatingTextBox.Text = dataSet.Tables["Movies"].Rows[rowIndex][2].ToString();
         }
 
         private void UpdateButton_Click(object sender, EventArgs e)
@@ -108,6 +115,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
             row[2] = RatingTextBox.Text;
 
             dataSet.Tables["Movies"].Rows.Add(row);
+            dataAdapter.Update(dataSet, "Movies");
 
             MessageBox.Show("Row successfully added.");
         }
@@ -115,8 +123,17 @@ namespace Lectures.Day1.PrescribedLectureExercise
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             dataSet.Tables["Movies"].Rows[currentRowIndex].Delete();
-            LoadButton_Click(LoadButton, new EventArgs());
+
+            try { dataAdapter.Update(dataSet, "Movies"); }
+            catch (SqlException)
+            {
+                MessageBox.Show("Row cannot be deleted as other tables are using this movie.");
+
+                return;
+            }
+
             ClearFields();
+            UpdateToolStripStatus();
 
             MessageBox.Show("Row successfully deleted.");
         }
@@ -139,7 +156,9 @@ namespace Lectures.Day1.PrescribedLectureExercise
                     if (row[0].ToString() == VideoSearchTextBox.Text)
                     {
                         currentRowIndex = rowIndex;
-                        RefreshFields();
+                        RefreshFields(currentRowIndex);
+
+                        UpdateToolStripStatus();
 
                         return;
                     }
@@ -154,7 +173,9 @@ namespace Lectures.Day1.PrescribedLectureExercise
                     if (row[1].ToString() == VideoSearchTextBox.Text)
                     {
                         currentRowIndex = rowIndex;
-                        RefreshFields();
+                        RefreshFields(currentRowIndex);
+
+                        UpdateToolStripStatus();
 
                         return;
                     }
@@ -164,6 +185,11 @@ namespace Lectures.Day1.PrescribedLectureExercise
             }
 
             MessageBox.Show("Movie cannot be found!");
+        }
+
+        private void UpdateToolStripStatus()
+        {
+            toolStripStatusLabel1.Text = $"Showing Record {currentRowIndex + 1} of {dataSet.Tables["Movies"].Rows.Count}";
         }
     }
 }
