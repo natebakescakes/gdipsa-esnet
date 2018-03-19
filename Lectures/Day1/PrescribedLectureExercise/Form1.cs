@@ -154,7 +154,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
             {
                 foreach (DataRow row in dataSet.Tables["Movies"].Rows)
                 {
-                    if (row[0].ToString() == VideoSearchTextBox.Text)
+                    if (row[0].ToString() == VideoSearchTextBox.Text.Trim())
                     {
                         currentRowIndex = rowIndex;
                         RefreshFields(currentRowIndex);
@@ -171,7 +171,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
             {
                 foreach (DataRow row in dataSet.Tables["Movies"].Rows)
                 {
-                    if (row[1].ToString() == VideoSearchTextBox.Text)
+                    if (row[1].ToString().Contains(VideoSearchTextBox.Text.Trim()))
                     {
                         currentRowIndex = rowIndex;
                         RefreshFields(currentRowIndex);
