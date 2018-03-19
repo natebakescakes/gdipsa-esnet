@@ -115,6 +115,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             dataSet.Tables["Movies"].Rows[currentRowIndex].Delete();
+            LoadButton_Click(LoadButton, new EventArgs());
             ClearFields();
 
             MessageBox.Show("Row successfully deleted.");
@@ -131,17 +132,35 @@ namespace Lectures.Day1.PrescribedLectureExercise
         {
             int rowIndex = 0;
 
-            foreach (DataRow row in dataSet.Tables["Movies"].Rows)
+            if (VideoCodeRadio.Checked)
             {
-                if (row[0].ToString() == VideoSearchTextBox.Text)
+                foreach (DataRow row in dataSet.Tables["Movies"].Rows)
                 {
-                    currentRowIndex = rowIndex;
-                    RefreshFields();
+                    if (row[0].ToString() == VideoSearchTextBox.Text)
+                    {
+                        currentRowIndex = rowIndex;
+                        RefreshFields();
 
-                    return;
+                        return;
+                    }
+
+                    rowIndex++;
                 }
+            }
+            else if (MovieTitleRadio.Checked)
+            {
+                foreach (DataRow row in dataSet.Tables["Movies"].Rows)
+                {
+                    if (row[1].ToString() == VideoSearchTextBox.Text)
+                    {
+                        currentRowIndex = rowIndex;
+                        RefreshFields();
 
-                rowIndex++;
+                        return;
+                    }
+
+                    rowIndex++;
+                }
             }
 
             MessageBox.Show("Movie cannot be found!");

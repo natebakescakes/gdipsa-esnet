@@ -45,19 +45,23 @@
             this.label2 = new System.Windows.Forms.Label();
             this.VideoCodeTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.VideoCodeRadio = new System.Windows.Forms.RadioButton();
+            this.MovieTitleRadio = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.MovieTitleRadio);
+            this.groupBox1.Controls.Add(this.VideoCodeRadio);
             this.groupBox1.Controls.Add(this.SearchButton);
             this.groupBox1.Controls.Add(this.VideoSearchTextBox);
             this.groupBox1.Location = new System.Drawing.Point(169, 344);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(630, 103);
+            this.groupBox1.Size = new System.Drawing.Size(618, 168);
             this.groupBox1.TabIndex = 29;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Find Movie by Video Code";
+            this.groupBox1.Text = "Find Movie";
             // 
             // SearchButton
             // 
@@ -204,11 +208,34 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Video Code";
             // 
+            // VideoCodeRadio
+            // 
+            this.VideoCodeRadio.AutoSize = true;
+            this.VideoCodeRadio.Checked = true;
+            this.VideoCodeRadio.Location = new System.Drawing.Point(64, 126);
+            this.VideoCodeRadio.Name = "VideoCodeRadio";
+            this.VideoCodeRadio.Size = new System.Drawing.Size(241, 36);
+            this.VideoCodeRadio.TabIndex = 16;
+            this.VideoCodeRadio.TabStop = true;
+            this.VideoCodeRadio.Text = "By Video Code";
+            this.VideoCodeRadio.UseVisualStyleBackColor = true;
+            // 
+            // MovieTitleRadio
+            // 
+            this.MovieTitleRadio.AutoSize = true;
+            this.MovieTitleRadio.Location = new System.Drawing.Point(322, 126);
+            this.MovieTitleRadio.Name = "MovieTitleRadio";
+            this.MovieTitleRadio.Size = new System.Drawing.Size(230, 36);
+            this.MovieTitleRadio.TabIndex = 17;
+            this.MovieTitleRadio.Text = "By Movie Title";
+            this.MovieTitleRadio.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
+            this.AcceptButton = this.SearchButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 473);
+            this.ClientSize = new System.Drawing.Size(985, 541);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.LastButton);
             this.Controls.Add(this.FirstButton);
@@ -252,6 +279,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox VideoCodeTextBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RadioButton MovieTitleRadio;
+        private System.Windows.Forms.RadioButton VideoCodeRadio;
     }
 }
 
