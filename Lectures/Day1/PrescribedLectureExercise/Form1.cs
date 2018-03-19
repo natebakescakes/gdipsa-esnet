@@ -116,6 +116,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
 
             dataSet.Tables["Movies"].Rows.Add(row);
             dataAdapter.Update(dataSet, "Movies");
+            UpdateToolStripStatus();
 
             MessageBox.Show("Row successfully added.");
         }
@@ -132,7 +133,7 @@ namespace Lectures.Day1.PrescribedLectureExercise
                 return;
             }
 
-            ClearFields();
+            PreviousButton_Click(PreviousButton, new EventArgs());
             UpdateToolStripStatus();
 
             MessageBox.Show("Row successfully deleted.");
