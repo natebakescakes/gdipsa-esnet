@@ -28,13 +28,17 @@ namespace Lectures.Day2.EFDemo
         {
             var context = new DafestyEntities();
 
-            //label1.Text = context.Customers.Where(x => x.CustomerID == "1001").First().CustomerName;
+            //var query = context.Customers.Where(x => x.CustomerID == "1001").First();
+            //var query = context.Customers.Where(x => x.MemberRating == "A");
+            //var query = context.Customers.OrderBy(x => x.CustomerName);
+            var query = context.Customers.Where(x => x.MemberRating == "A").OrderBy(x => x.CustomerName);
 
-            var query = from x in context.Customers
-                        where x.CustomerID == "1001"
-                        select x;
 
-            label1.Text = query.First().CustomerName;
+            //var query = from x in context.Customers
+            //            where x.CustomerID == "1001"
+            //            select x;
+
+            dataGridView1.DataSource = query.ToList();
         }
     }
 }
