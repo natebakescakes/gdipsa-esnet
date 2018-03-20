@@ -60,12 +60,14 @@ namespace PracticeExercises
                     // Method-based lambda expression
                     dataGridView1.DataSource = context.Movies
                         .Where(x => x.Rating == "R")
+                        .Select(g => new { g.VideoCode, g.MovieTitle, g.RentalPrice})
                         .ToList();
 
                     // LINQ expression
                     dataGridView1.DataSource = (from x in context.Movies
                                                 where x.Rating == "R"
-                                                select x).ToList();
+                                                select new { x.VideoCode, x.MovieTitle, x.RentalPrice })
+                                                .ToList();
 
                     break;
                 case "Question 5":
@@ -80,20 +82,82 @@ namespace PracticeExercises
                                                 select x).ToList();
                     break;
                 case "Question 6":
-                    MessageBox.Show(context.Movies
-                        .Count(x => x.MovieType == "Action").ToString());
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
+                        .GroupBy(x => 1)
+                        .Select(g => new { CountMovies = g.Count() })
+                        .ToList();
+
+                    // LINQ expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                group x by 1 into g
+                                                select new { CountMovies = g.Count() })
+                                                .ToList();
                     break;
                 case "Question 7":
-                    MessageBox.Show(context.Movies
-                        .Where(x => x.MovieType == "Action")
-                        .Sum(x => x.TotalStock)
-                        .ToString());
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
+                        .GroupBy(x => x.MovieType)
+                        .Select(g => new { MovieType = g.Key, SumTotalStock = g.Sum(y => y.TotalStock) })
+                        .ToList();
+
+                    // LINQ Expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                group x by x.MovieType into g
+                                                select new { MovieType = g.Key, SumTotalStock = g.Sum(y => y.TotalStock) })
+                                                .ToList();
                     break;
                 case "Question 8":
-                    MessageBox.Show(context.Movies
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
                         .Where(x => x.MovieType == "Comedy")
-                        .Average(x => x.RentalPrice)
-                        .ToString());
+                        .GroupBy(y => 1)
+                        .Select(g => new { AverageRentalPrice = g.Average(z => z.RentalPrice) })
+                        .ToList();
+
+                    // LINQ expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                where x.MovieType == "Comedy"
+                                                group x by 1 into g
+                                                select new { AverageRentalPrice = g.Average(y => y.RentalPrice) })
+                                                .ToList();
+                    break;
+                case "Question 11":
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
+                        .Where(x => x.VideoCode == 5)
+                        .Select(g => new { g.VideoCode, g.Rating, g.Producer.ProducerName })
+                        .ToList();
+
+                    // LINQ Expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                where x.VideoCode == 5
+                                                select new { x.VideoCode, x.Rating, x.Producer.ProducerName })
+                                                .ToList();
+                    break;
+                case "Question 12":
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
+                        .Where(x => x.Producer.ProducerName == "Walt Disney Studio")
+                        .Select(g => new { g.Producer.ProducerName, g.MovieTitle, g.MovieType })
+                        .ToList();
+
+                    // LINQ Expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                where x.Producer.ProducerName == "Walt Disney Studio"
+                                                select new { x.Producer.ProducerName, x.MovieTitle, x.MovieType })
+                                                .ToList();
+                    break;
+                case "Question 13":
+                    // Method-based lambda expression
+                    dataGridView1.DataSource = context.Movies
+                        .Select(x => new { x.MovieTitle, x.Rating, x.MovieType, x.Producer.ProducerName })
+                        .ToList();
+
+                    // LINQ Expression
+                    dataGridView1.DataSource = (from x in context.Movies
+                                                select new { x.MovieTitle, x.Rating, x.MovieType, x.Producer.ProducerName })
+                                                .ToList();
                     break;
                 default:
                     break;

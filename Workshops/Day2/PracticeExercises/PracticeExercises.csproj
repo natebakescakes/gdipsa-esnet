@@ -81,6 +81,9 @@
     <Compile Include="Movie.cs">
       <DependentUpon>DafestyModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Producer.cs">
+      <DependentUpon>DafestyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

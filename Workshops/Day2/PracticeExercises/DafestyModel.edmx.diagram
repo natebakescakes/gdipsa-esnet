@@ -6,6 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a866e3dbfecb465583a3b5f8e1016adc" Name="Diagram1">
         <EntityTypeShape EntityType="DafestyModel.Movie" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DafestyModel.Producer" Width="1.5" PointX="2.875" PointY="1.25" />
+        <AssociationConnector Association="DafestyModel.FK_Movies_Producers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

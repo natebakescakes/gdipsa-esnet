@@ -26,5 +26,6 @@ namespace PracticeExercises
         }
     
         public virtual DbSet<Movie> Movies { get; set; }
+        public virtual DbSet<Producer> Producers { get; set; }
     }
 }
