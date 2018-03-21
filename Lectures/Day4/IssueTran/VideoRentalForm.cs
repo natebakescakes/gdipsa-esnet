@@ -24,8 +24,13 @@ namespace Lectures.Day4.IssueTran
             customerLookUpForm = new CustomerLookUpForm(this);
             videoLookUpForm = new VideoLookUpForm(this);
 
-            IssueDateTimePicker.MaxDate = System.DateTime.Now;
-            DueDateTimePicker.MinDate = System.DateTime.Now;
+            // IssueDate can back date to 1 year before today
+            IssueDateTimePicker.MinDate = DateTime.Now.Date - new TimeSpan(365, 0, 0, 0);
+            IssueDateTimePicker.MaxDate = DateTime.Now.Date;
+
+            // DueDate can range from today to 1 year from today
+            DueDateTimePicker.MinDate = DateTime.Now.Date;
+            DueDateTimePicker.MaxDate = DateTime.Now.Date + new TimeSpan(365, 0, 0, 0);
         }
 
         private void CustomerLookUpButton_Click(object sender, EventArgs e)
@@ -86,10 +91,13 @@ namespace Lectures.Day4.IssueTran
         private void SubmitButton_Click(object sender, EventArgs e)
         {
             if (CustomerNameTextBox.Text == "" || VideoNameTextBox.Text == "")
+            {
                 MessageBox.Show("Invalid Customer or Movie.");
+                return;
+            }
 
             // Transaction ID = latest transactionID + 1
-            short trxId = context.IssueTrans.Max(x => x.TransactionID);
+            short trxId = (short)(context.IssueTrans.Max(x => x.TransactionID) + 1);
 
             var trx = new IssueTran()
             {
@@ -113,8 +121,8 @@ namespace Lectures.Day4.IssueTran
         {
             CustomerIdTextBox.Text = "";
             VideoCodeTextBox.Text = "";
-            //IssueDateTimePicker.Value = DateTime.Now;
-            //DueDateTimePicker.Value = DateTime.Now;
+            IssueDateTimePicker.Value = DateTime.Now.Date;
+            DueDateTimePicker.Value = DateTime.Now.Date;
             RemarksTextBox.Text = "";
         }
     }
