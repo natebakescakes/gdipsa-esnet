@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lectures.Day4.IssueTran
+namespace Workshops.Day4.IssueTran
 {
     using System;
     using System.Data.Entity;

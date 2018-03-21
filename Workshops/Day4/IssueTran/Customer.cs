@@ -7,29 +7,35 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lectures.Day4.IssueTran
+namespace Workshops.Day4.IssueTran
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Movie
+    public partial class Customer
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Movie()
+        public Customer()
         {
             this.IssueTrans = new HashSet<IssueTran>();
         }
     
-        public short VideoCode { get; set; }
-        public string MovieTitle { get; set; }
-        public string MovieType { get; set; }
-        public string Rating { get; set; }
-        public Nullable<float> RentalPrice { get; set; }
-        public string ProducerID { get; set; }
-        public string Director { get; set; }
-        public string Media { get; set; }
-        public Nullable<short> TotalStock { get; set; }
-        public Nullable<short> NumberRented { get; set; }
+        public string CustomerID { get; set; }
+        public string CustomerName { get; set; }
+        public string MemberCategory { get; set; }
+        public Nullable<int> Age { get; set; }
+        public Nullable<decimal> AmountSpent { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string OldPostalCode { get; set; }
+        public string PostalCode { get; set; }
+        public string CountryCode { get; set; }
+        public string ContactTitle { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Extension { get; set; }
+        public string FaxNumber { get; set; }
+        public string EmailAddress { get; set; }
+        public string Notes { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IssueTran> IssueTrans { get; set; }

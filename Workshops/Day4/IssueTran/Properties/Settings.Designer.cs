@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lectures.Day4.IssueTran.Properties {
+namespace Workshops.Day4.IssueTran.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

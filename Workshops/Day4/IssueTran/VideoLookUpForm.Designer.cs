@@ -1,4 +1,4 @@
-﻿namespace Lectures.Day4.IssueTran
+﻿namespace Workshops.Day4.IssueTran
 {
     partial class VideoLookUpForm
     {

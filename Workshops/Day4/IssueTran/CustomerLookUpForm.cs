@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lectures.Day4.IssueTran
+namespace Workshops.Day4.IssueTran
 {
     public partial class CustomerLookUpForm : Form
     {
